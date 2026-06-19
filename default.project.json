@@ -1,5 +1,7 @@
 {
   "name": "Tick_Integrated_Template",
+  "servePort": 8000,
+  "servePlaceIds": [],
   "tree": {
     "$className": "DataModel",
 
