@@ -19,4 +19,26 @@ function physical_effects.KnockBack(character, direction, force, wait)
     return true
 end
 
+function physical_effects.Freeze(character, duration)
+    local baseParts = {}
+    for index, child in character:GetChildren() do
+        if not child:IsA("BasePart") then continue end
+        baseParts[child.Name] = child
+    end
+    for index, part in baseParts do part.Anchored = true end
+    task.wait(duration)
+    for index, part in baseParts do part.Anchored = false end
+end
+
+function physical_effects.Stun(character, duration)
+    local humanoid = character.Humanoid
+    local original_walk_speed = humanoid.WalkSpeed
+    local original_jump_power = humanoid.JumpPower
+    humanoid.WalkSpeed = 0
+    humanoid.JumpPower = 0
+    task.wait(duration)
+    humanoid.WalkSpeed = original_walk_speed
+    humanoid.JumpPower = original_jump_power
+end
+
 return physical_effects
