@@ -41,4 +41,15 @@ function physical_effects.Stun(character, duration)
     humanoid.JumpPower = original_jump_power
 end
 
+function physical_effects.Slow(character, targetSpeed, targetJumpPower, duration)
+    local humanoid = character.Humanoid
+    local original_walk_speed = humanoid.WalkSpeed
+    local original_jump_power = humanoid.JumpPower
+    humanoid.WalkSpeed = targetSpeed
+    humanoid.JumpPower = targetJumpPower
+    task.wait(duration)
+    humanoid.WalkSpeed = original_walk_speed
+    humanoid.JumpPower = original_jump_power
+end
+
 return physical_effects
