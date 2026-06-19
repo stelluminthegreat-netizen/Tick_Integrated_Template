@@ -1,6 +1,6 @@
 local physical_effects = {}
 
-function physical_effects.KnockBack(character, direction, force,wait)
+function physical_effects.KnockBack(character, direction, force, wait)
     local HRP = character:FindFirstChild("HumanoidRootPart")
     if not HRP then warn("HumanoidRootPart not found.") return end
     local velocity = HRP:FindFirstChild("LinearVelocity")
@@ -10,6 +10,13 @@ function physical_effects.KnockBack(character, direction, force,wait)
     end
     velocity.MaxForce = force
     velocity.Enabled = false
+
+    velocity.VectorVelocity = direction
+    velocity.Enabled = true
+    shared.Task:Wait(wait * 48)
+    velocity.Enabled = false
+
+    return true
 end
 
 return physical_effects
