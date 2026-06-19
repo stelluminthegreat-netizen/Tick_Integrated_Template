@@ -13,7 +13,7 @@ function physical_effects.KnockBack(character, direction, force, wait)
 
     velocity.VectorVelocity = direction
     velocity.Enabled = true
-    shared.Task:Wait(wait * 48)
+    task.wait(1)
     velocity.Enabled = false
 
     return true
