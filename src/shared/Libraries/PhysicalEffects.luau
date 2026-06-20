@@ -1,6 +1,6 @@
 local physical_effects = {}
 
-function physical_effects.KnockBack(character, direction, force, wait)
+function physical_effects.KnockBack(character, direction, force, duration)
     task.spawn(function()
         local HRP = character:FindFirstChild("HumanoidRootPart")
         if not HRP then warn("HumanoidRootPart not found.") return end
@@ -14,7 +14,7 @@ function physical_effects.KnockBack(character, direction, force, wait)
 
         velocity.VectorVelocity = direction
         velocity.Enabled = true
-        task.wait(1)
+        task.wait(duration)
         velocity.Enabled = false
 
         return true
