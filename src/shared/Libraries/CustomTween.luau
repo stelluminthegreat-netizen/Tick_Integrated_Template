@@ -32,8 +32,20 @@ function custom_tween.RescaleModel(model, targetScale, duration)
     tweenScale(start_scale, targetScale, tween_info, model)
 end
 
-function custom_tween.RepositionModel()
-    
+function custom_tween.RepositionModel(model : Model, target_position : Vector3, duration : Number, repeat_count : number, snap)
+    -- Get primary part
+    -- Get current CFrame
+    -- Create tween with it
+    -- Play and return tween
+    local tween_service = game:GetService("TweenService")
+
+    local primary_part = model.PrimaryPart
+    local current_cframe = primary_part.CFrame
+    local tween_info = TweenInfo.new(duration, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut, repeat_count, snap or false)
+    local tween = tween_service:Create(primary_part, tween_info, {CFrame = current_cframe + target_position})
+
+    tween:Play()
+    return tween
 end
 
 return custom_tween
