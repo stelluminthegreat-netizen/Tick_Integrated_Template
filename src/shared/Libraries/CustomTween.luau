@@ -32,4 +32,8 @@ function custom_tween.RescaleModel(model, targetScale, duration)
     tweenScale(start_scale, targetScale, tween_info, model)
 end
 
+function custom_tween.RepositionModel()
+    
+end
+
 return custom_tween
