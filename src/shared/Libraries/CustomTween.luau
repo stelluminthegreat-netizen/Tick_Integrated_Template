@@ -37,7 +37,7 @@ function custom_tween.RepositionModel(model : Model, target_position : Vector3, 
 
     local primary_part = model.PrimaryPart
     local current_cframe = primary_part.CFrame
-    local tween_info = TweenInfo.new(duration, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut, repeat_count, snap or false)
+    local tween_info = TweenInfo.new(duration, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut, repeat_count or 0, snap or false)
     local tween = tween_service:Create(primary_part, tween_info, {CFrame = current_cframe + target_position})
 
     tween:Play()
