@@ -56,4 +56,8 @@ function custom_tween.ReorientModel(model : Model, target_orientation, duration 
     return tween
 end
 
+function custom_tween.ChangeModelCFrame(model, target_cframe : CFrame, duration : Number, repeat_count : number, snap : boolean)
+    
+end
+
 return custom_tween
