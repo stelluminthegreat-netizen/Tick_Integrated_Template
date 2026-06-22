@@ -1,5 +1,7 @@
 local custom_tween = {}
 
+--------------------------------------------- >> 3D TWEENS << ---------------------------------------------
+
 function custom_tween.RescaleModel(model, targetScale, duration)
     local tween_service = game:GetService("TweenService")
     local run_service = game:GetService("RunService")
@@ -66,5 +68,9 @@ function custom_tween.ChangeModelCFrame(model, target_cframe : CFrame, duration 
     tween:Play()
     return tween
 end
+
+--------------------------------------------- >> 2D TWEENS << ---------------------------------------------
+
+
 
 return custom_tween
