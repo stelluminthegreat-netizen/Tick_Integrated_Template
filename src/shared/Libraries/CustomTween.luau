@@ -80,4 +80,13 @@ function custom_tween.RepositionUi(ui, target_position : UDim2, duration : numbe
     return tween
 end
 
+function custom_tween.ReorientUi(ui, target_orientation : number, duration : number, repeat_count : number, snap : boolean)
+    local tween_service = game:GetService("TweenService")
+    local tween_info = TweenInfo.new(duration, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut, repeat_count or 0, snap or false)
+    local tween = tween_service:Create(ui, tween_info, {Rotation = target_orientation})
+
+    tween:Play()
+    return tween
+end
+
 return custom_tween
