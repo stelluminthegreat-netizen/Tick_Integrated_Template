@@ -45,7 +45,15 @@ function custom_tween.RepositionModel(model : Model, target_position : Vector3, 
 end
 
 function custom_tween.ReorientModel(model : Model, target_orientation, duration : number, repeat_count : number, snap)
-    
+    local tween_service = game:GetService("TweenService")
+
+    local primary_part = model.PrimaryPart
+    local current_cframe = primary_part.CFrame
+    local tween_info = TweenInfo.new(duration, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut, repeat_count or 0, snap or false)
+    local tween = tween_service:Create(primary_part, tween_info, {CFrame = current_cframe * target_orientation})
+
+    tween:Play()
+    return tween
 end
 
 return custom_tween
