@@ -69,6 +69,16 @@ function custom_tween.ChangeModelCFrame(model, target_cframe : CFrame, duration 
     return tween
 end
 
+function custom_tween.ChangeBasePartCFrame(base_part, target_cframe : CFrame, duration : Number, repeat_count : number, snap : boolean)
+    local tween_service = game:GetService("TweenService")
+
+    local tween_info = TweenInfo.new(duration, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut, repeat_count or 0, snap or false)
+    local tween = tween_service:Create(base_part, tween_info, {CFrame = target_cframe})
+    
+    tween:Play()
+    return tween
+end
+
 --------------------------------------------- >> 2D TWEENS << ---------------------------------------------
 
 function custom_tween.RepositionUI(ui, target_position : UDim2, duration : number, repeat_count : number, snap : boolean)
