@@ -32,7 +32,7 @@ function custom_tween.RescaleModel(model, targetScale, duration)
     tweenScale(start_scale, targetScale, tween_info, model)
 end
 
-function custom_tween.RepositionModel(model : Model, target_position : Vector3, duration : Number, repeat_count : number, snap)
+function custom_tween.RepositionModel(model : Model, target_position : Vector3, duration : Number, repeat_count : number, snap : boolean)
     local tween_service = game:GetService("TweenService")
 
     local primary_part = model.PrimaryPart
@@ -44,7 +44,7 @@ function custom_tween.RepositionModel(model : Model, target_position : Vector3, 
     return tween
 end
 
-function custom_tween.ReorientModel(model : Model, target_orientation, duration : number, repeat_count : number, snap)
+function custom_tween.ReorientModel(model : Model, target_orientation, duration : number, repeat_count : number, snap : boolean)
     local tween_service = game:GetService("TweenService")
 
     local primary_part = model.PrimaryPart
@@ -56,7 +56,7 @@ function custom_tween.ReorientModel(model : Model, target_orientation, duration 
     return tween
 end
 
-function custom_tween.ChangeModelCFrame(model, target_cframe : CFrame, duration : Number, repeat_count : number, snap : boolean)
+function custom_tween.ChangeModelCFrame(model, target_cframe : CFrame, duration : Number, repeat_count : number , snap : boolean)
     local tween_service = game:GetService("TweenService")
 
     local primary_part = model.PrimaryPart
