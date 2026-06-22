@@ -71,6 +71,8 @@ end
 
 --------------------------------------------- >> 2D TWEENS << ---------------------------------------------
 
-
+function custom_tween.RepositionUi(ui, target_position : UDim2, duration : number, repeat_count : number, snap : boolean)
+    
+end
 
 return custom_tween
