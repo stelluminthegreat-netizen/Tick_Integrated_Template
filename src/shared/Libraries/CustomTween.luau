@@ -33,10 +33,6 @@ function custom_tween.RescaleModel(model, targetScale, duration)
 end
 
 function custom_tween.RepositionModel(model : Model, target_position : Vector3, duration : Number, repeat_count : number, snap)
-    -- Get primary part
-    -- Get current CFrame
-    -- Create tween with it
-    -- Play and return tween
     local tween_service = game:GetService("TweenService")
 
     local primary_part = model.PrimaryPart
@@ -46,6 +42,10 @@ function custom_tween.RepositionModel(model : Model, target_position : Vector3, 
 
     tween:Play()
     return tween
+end
+
+function custom_tween.ReorientModel(model : Model, target_orientation, duration : number, repeat_count : number, snap)
+    
 end
 
 return custom_tween
