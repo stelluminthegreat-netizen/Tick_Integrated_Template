@@ -12,6 +12,7 @@ end
 
 local template = require(serverScriptService.Server.Data.DataTemplate)
 local dataManager = require(serverScriptService.Server.Data.DataManager)
+dataManager.RespondToDataRequest()
 
 -- Access profile store
 local playerStore = profileStore.New(getStoreName(), template)
@@ -28,8 +29,6 @@ function Initializer(player: Player, profile: typeof(playerStore:StartSessionAsy
 	local wins = Instance.new("NumberValue", leaderstats)
 	wins.Name = "Wins"
 	wins.Value = profile.Data.Wins
-
-	dataManager.RespondToDataRequest()
 end
 
 function playerAdded(player: Player)
