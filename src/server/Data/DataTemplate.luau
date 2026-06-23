@@ -1,3 +1,3 @@
 return {
-    
+    ["Joins"] = 0
 }
