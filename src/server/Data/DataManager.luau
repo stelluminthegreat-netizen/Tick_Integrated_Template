@@ -6,8 +6,8 @@ dataManager.profiles = {}
 
 function  dataManager.UpdateLeaderstats(plrName, statsName, changes)
 	local player = Players[plrName].Player
-	local stats = player.leaderstats[statsName]
-	changes(player, stats)
+	dataManager.WaitForData(player)
+	changes(player, statsName)
 end
 
 function dataManager.RespondToDataRequest()
@@ -19,7 +19,16 @@ end
 
 function dataManager.UpdatePlayerData(plr)
 	local remoteEvent = game.ReplicatedStorage.Remotes.Events.UpdatePlayerData
+	dataManager.WaitForData(plr)
 	remoteEvent:FireClient(plr, plr, dataManager.profiles[plr].Data)
+end
+
+function dataManager.WaitForData(plr)
+	local data 
+	while not data do
+		task.wait()
+		data = dataManager.profiles[plr]
+	end
 end
 
 return dataManager
