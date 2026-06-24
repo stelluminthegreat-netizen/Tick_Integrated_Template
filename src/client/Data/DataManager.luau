@@ -12,7 +12,7 @@ end
 
 function dataManager.ReceiveData()
     updatePlayerData.OnClientEvent:Connect(function(plr, data)
-        dataManager.Profiles[plr] = data  
+        dataManager.Profiles[plr].Data = data  
     end)
 end
 
