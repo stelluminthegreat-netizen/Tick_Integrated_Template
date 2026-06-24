@@ -1,4 +1,4 @@
-for index, descendant in script.Parent.Modules:GetDescendants() do
+for index, descendant in script.Parent.Parent.Parent.Modules:GetDescendants() do
 	if descendant.ClassName == "ModuleScript" then shared[descendant.Name] = require(descendant) end
 end
 

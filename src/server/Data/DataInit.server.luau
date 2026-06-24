@@ -21,14 +21,6 @@ function Initializer(player: Player, profile: typeof(playerStore:StartSessionAsy
 	-- Leaderstats
 	local leaderstats = Instance.new("Folder", player)
 	leaderstats.Name = "leaderstats"
-	
-	local highestStage = Instance.new("NumberValue", leaderstats)
-	highestStage.Name = "HighestStage"
-	highestStage.Value = profile.Data.HighestStage
-
-	local wins = Instance.new("NumberValue", leaderstats)
-	wins.Name = "Wins"
-	wins.Value = profile.Data.Wins
 end
 
 function playerAdded(player: Player)
