@@ -1,10 +1,12 @@
 task.wait(0.25)
-local Players = shared.Player.Players
+local player_obj = shared.Player
+local Players = player_obj.Players
 local dataManager = {}
 
 dataManager.profiles = {}
 
 function  dataManager.UpdateLeaderstats(plrName, statsName, changes)
+	player_obj.WaitForPlayer(plrName)
 	local player = Players[plrName].Player
 	dataManager.WaitForData(player)
 	changes(player, statsName)

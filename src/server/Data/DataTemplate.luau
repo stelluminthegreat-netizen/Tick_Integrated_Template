@@ -1,3 +1,4 @@
 return {
-    ["Joins"] = 0
+    ["Joins"] = 0,
+    ["Passes"] = {}
 }

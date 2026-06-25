@@ -11,4 +11,12 @@ function class.new(plr)
 	return self
 end
 
+function class.WaitForPlayer(plr_name)
+	local player
+	while not player do
+		task.wait()
+		player = class.Players[plr_name]
+	end
+end
+
 return class
