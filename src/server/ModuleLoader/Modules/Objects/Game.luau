@@ -17,6 +17,7 @@ function OnPlayerAdded(plr)
     local player_data = data_manager.profiles[plr].Data
     player.Data = player_data
     market_manager.InitializeOwnedPass(plr)
+    market_manager.InitializeDevProdSystem()
 end
 
 return self
