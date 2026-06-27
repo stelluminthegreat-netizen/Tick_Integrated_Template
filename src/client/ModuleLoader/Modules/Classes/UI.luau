@@ -5,23 +5,24 @@ class.__index = class
 class.UIs = {}
 
 function class.new(UI, parent)
-	local self = setmetatable(UI:GetAttributes(), class)
+	local self = setmetatable({}, class)
 	self.Player = game.Players.LocalPlayer
 	self.UI = UI:Clone()
 	self.Connections = {}
 	self.Attributes = UI:GetAttributes()
 	class.UIs[self.UI.Name] = self
-	if parent ~= nil then self.UI.Parent = self.Player.PlayerGui:WaitForChild(parent) self:Initialize() end
+	if parent ~= nil then self.UI.Parent = self.Player.PlayerGui:WaitForChild(parent) self:Initialize() end -- Parent the UI instance if parent argument is not nil
 
 	return self
 end
 
 function class:Initialize()
-	self.UI.Parent = self.Player.PlayerGui:FindFirstChild(self.Parent, true)
-	for index, attribute in self do
-		pcall(function()
-			functions[attribute](self)
-		end)
+	self.UI.Parent = self.Player.PlayerGui:FindFirstChild(self.Attributes.Parent, true) -- Parent the UI instance to its predetermined parent attribute
+	local i = 0
+	for index, attribute in self.Attributes do
+		i += 1															-- Loop through all UI object attributes
+		local func = functions[self.Attributes["Function" .. i]]		-- Find its functions
+		if func then func(self) end										-- If function is found, run it
 	end
 end
 

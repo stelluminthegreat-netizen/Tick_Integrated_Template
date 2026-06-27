@@ -1,6 +1,7 @@
 local functions = {}
 local player = game.Players.LocalPlayer
 local DataManager = require(player.PlayerScripts.Client.Data.DataManager)
+local custom_tween = require(game.ReplicatedStorage.Shared.Libraries.CustomTween)
 local data = DataManager.Profiles[player]
 ------------------------ [[ UNIVERSAL FUNCTIONS ]] ------------------------
 
@@ -68,17 +69,22 @@ function Open(UI_Obj)
 
         -- Segregrate different priorities
         for _, ui in UIs do
-            local PrioNum = ui.OpenPrio
+            local PrioNum = ui.Attributes.OpenPrio
             if not Prios[PrioNum] then Prios[PrioNum] = {} end
             Prios[PrioNum][ui.UI.Name] = ui 
         end
 
         -- Initialize highest priority to lowest priority UI
-        for i = 0, UI_Obj.OpenLowestPrio, 1 do
+        for i = 1, UI_Obj.Attributes.OpenLowestPrio, 1 do
             for _, ui in Prios[i] do
                 ui:Initialize()
             end
         end
+
+        local root_ui = UIs[UI_Obj.UI:GetAttribute("target_root_ui")]    -- Find root UI
+        local tween = custom_tween.RepositionUI(root_ui.UI, root_ui.UI.Position - UDim2.fromScale(0, 1), 1)                          -- Animate it
+        tween.Completed:Wait()
+        tween:Destroy()
     end    
 end
 
@@ -93,17 +99,24 @@ function Close(UI_Obj)
         UIs[uiName] = ui
     end
 
+    local root_ui = UIs[UI_Obj.UI:GetAttribute("target_root_ui")]    -- Find root UI
+    root_ui.UI.Parent = UI_Obj.Player.PlayerGui.Trash                -- Reparent it
+    local tween = custom_tween.RepositionUI(root_ui.UI, root_ui.UI.Position + UDim2.fromScale(0, 2), 1)                          -- Animate it
+    tween.Completed:Wait()
+    -- Continue
+
     for _, ui in UIs do
-        local PrioNum = ui.ClosePrio
+        local PrioNum = ui.Attributes.ClosePrio
         if not Prios[PrioNum] then Prios[PrioNum] = {} end
         Prios[PrioNum][ui.UI.Name] = ui 
     end
 
-    for i = 0, UI_Obj.CloseLowestPrio, 1 do
+    for i = 1, UI_Obj.Attributes.CloseLowestPrio, 1 do
         for _, ui in Prios[i] do
             ui:Destroy()
         end
     end
+    tween:Destroy()
 end
 
 ------------------------ [[ GAME SPECIFIC FUNCTIONS ]] ------------------------
