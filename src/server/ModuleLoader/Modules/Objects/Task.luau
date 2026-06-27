@@ -1,5 +1,6 @@
 local ticksPerSecond = 48
 local connection = nil
+local current_tick = game.ReplicatedStorage.Values.CurrentTick
 local taskLists = {}
 
 local self = {}
@@ -44,6 +45,7 @@ end
 
 function Loop()
 	local currentTick = math.round((workspace:GetServerTimeNow() - self.StartTime) * ticksPerSecond)
+	current_tick.Value = currentTick
 	if self.Tick >= currentTick then return end
 	while self.Tick < currentTick do
 		self.Tick += 1
