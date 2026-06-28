@@ -44,6 +44,12 @@ function class:Moving()
 	class.Attacks[self.AttackNumber] = self
 end
 
+function class:Instant()
+	self.Position = self.Attributes.TargetPosition
+	self.InRange = self:Detect()
+	self:Activate()
+end
+
 function class:Detect()
 	local position = self.Position
 	-- local player_obj = self.Attributes.Player
@@ -60,7 +66,6 @@ function class:Activate()
 	if self.Activated and self.Activated == true then return end -- Debounce to avoid multiple runs
 	print(self.AttackNumber)
 	self.Activated = true
-	warn("BAM!")
 end
 
 function class:Destroy()
