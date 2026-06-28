@@ -66,6 +66,8 @@ function class:Activate()
 	if self.Activated and self.Activated == true then return end -- Debounce to avoid multiple runs
 	print(self.AttackNumber)
 	self.Activated = true
+
+	self:Destroy()
 end
 
 function class:Destroy()
