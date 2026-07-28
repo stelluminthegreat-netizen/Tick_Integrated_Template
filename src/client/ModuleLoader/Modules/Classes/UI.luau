@@ -23,8 +23,8 @@ function class:Init()
 			self.Connections[eventName] = self.Events[eventName]:Connect(self[eventName], self)
 		end
 	end
-	if self.Funcs then
-		for _, funcName in self.Funcs do
+	if self.FrameWorkFuncs then
+		for _, funcName in self.FrameWorkFuncs do
 			local func = self[funcName]
 			if not func then continue end
 			func(self)
